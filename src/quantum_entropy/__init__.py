@@ -1,0 +1,1 @@
+"""Quantum entropy scaling simulation package."""
