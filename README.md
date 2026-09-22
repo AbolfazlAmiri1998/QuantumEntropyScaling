@@ -17,14 +17,13 @@ The central question is:
 The study uses the transverse-field Ising Hamiltonian
 
 $$
-H = J \sum_{i=1}^{N-1} \sigma_i^z \sigma_{i+1}^z
-  + h \sum_{i=1}^{N} \sigma_i^x
+H = J \sum_{i=1}^{N-1} \sigma_i^z \sigma_{i+1}^z + h \sum_{i=1}^{N} \sigma_i^x
 $$
 
 The main observable is the von Neumann entropy of a one-qubit subsystem,
 
 $$
-S_A(t) = -\mathrm{Tr}\!\left[\rho_A(t) \ln \rho_A(t)\right]
+S_A(t) = -\mathrm{Tr}\left[\rho_A(t) \ln \rho_A(t)\right]
 $$
 
 The total quantum system remains closed and evolves unitarily. Therefore,
@@ -51,8 +50,7 @@ irreversibility.
 The Hamiltonian is
 
 $$
-H = J \sum_{i=1}^{N-1} \sigma_i^z \sigma_{i+1}^z
-  + h \sum_{i=1}^{N} \sigma_i^x
+H = J \sum_{i=1}^{N-1} \sigma_i^z \sigma_{i+1}^z + h \sum_{i=1}^{N} \sigma_i^x
 $$
 
 The convention used here has a plus sign in front of both terms.
@@ -64,14 +62,36 @@ For $J > 0$, the nearest-neighbor interaction is antiferromagnetic.
 
 The baseline parameters are:
 
-```python
+```text
 J = 2.0
 h = 2.0
 ```
 
-## Installation
+## Method (Short Summary)
 
-Clone the repository and install the package in editable mode:
+Phase-space variables and the relevant observables are computed via
+exact diagonalization:
+
+```text
+H = J Σ σᶻσᶻ + h Σ σˣ
+```
+
+Time evolution is performed in the eigenbasis:
+
+```text
+|ψ(t)⟩ = V exp(-i E t) V† |ψ(0)⟩
+```
+
+The subsystem entropy is then evaluated as
+
+$$
+S_A(t) = -\sum_k \lambda_k \ln \lambda_k
+$$
+
+where $\{\lambda_k\}$ are the eigenvalues of the reduced density matrix
+$\rho_A(t)$.
+
+## Installation
 
 ```bash
 git clone https://github.com/AbolfazlAmiri1998/QuantumEntropyScaling.git
@@ -81,9 +101,6 @@ pip install -e .
 
 ## Usage
 
-A minimal example of evolving an initial state and computing the
-subsystem entropy:
-
 ```python
 import numpy as np
 from quantum_entropy.hamiltonian import build_ising_chain
@@ -91,32 +108,27 @@ from quantum_entropy.dynamics import TimeEvolution
 from quantum_entropy.observables import von_neumann_entropy
 
 N, J, h = 6, 2.0, 2.0
-
-# Build the Hamiltonian and diagonalize it
 H = build_ising_chain(N, J, h)
 evolution = TimeEvolution(H)
 
-# Initial state (example: all spins up along x)
 psi0 = np.ones(2**N, dtype=complex) / np.sqrt(2**N)
-
-# Evolve over a time grid
 times = np.linspace(0.0, 10.0, 200)
 states = evolution.evolve_many(psi0, times)
 ```
 
 ## Project Structure
 
-```
+```text
 QuantumEntropyScaling/
 ├── src/quantum_entropy/
-│   ├── hamiltonian.py   # Transverse-field Ising Hamiltonian
-│   ├── dynamics.py      # Exact time evolution via diagonalization
-│   └── observables.py   # Entropy, purity, expectation values
-├── scripts/             # Simulation and analysis scripts
-├── tests/               # Unit tests
-├── data/                # Numerical output
-├── figures/             # Generated plots
-└── docs/                # Documentation
+│   ├── hamiltonian.py
+│   ├── dynamics.py
+│   └── observables.py
+├── scripts/
+├── tests/
+├── data/
+├── figures/
+└── docs/
 ```
 
 ## License
