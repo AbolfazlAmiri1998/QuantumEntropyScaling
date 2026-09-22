@@ -1,5 +1,14 @@
 # Quantum Entropy Scaling
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![NumPy](https://img.shields.io/badge/NumPy-required-013243)
+![SciPy](https://img.shields.io/badge/SciPy-required-8CAAE6)
+![Field](https://img.shields.io/badge/Field-Quantum%20Spin%20Chains-purple)
+![Method](https://img.shields.io/badge/Method-Exact%20Diagonalization-orange)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Type](https://img.shields.io/badge/Type-Research%20Project-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 Exact-diagonalization study of subsystem entanglement dynamics in finite transverse-field Ising chains.
 
 ## Overview
