@@ -1,5 +1,14 @@
 # Quantum Entropy Scaling
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![NumPy](https://img.shields.io/badge/NumPy-required-013243)
+![SciPy](https://img.shields.io/badge/SciPy-required-8CAAE6)
+![Field](https://img.shields.io/badge/Field-Quantum%20Spin%20Chains-purple)
+![Method](https://img.shields.io/badge/Method-Exact%20Diagonalization-orange)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Type](https://img.shields.io/badge/Type-Research%20Project-purple)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 Exact-diagonalization study of subsystem entanglement dynamics in finite
 transverse-field Ising chains.
 
@@ -77,10 +86,7 @@ h = 2.0
 
 ## Method
 
-### Phase-space and initial state
-
-The initial state is taken as a product state. The full Hilbert space has
-dimension
+### Hilbert space
 
 ```text
 dim(H) = 2^N
@@ -102,38 +108,29 @@ The state is then evolved analytically in the eigenbasis:
 
 ### Subsystem entropy
 
-The reduced density matrix of subsystem A is obtained by tracing out the
-complement:
+The reduced density matrix of subsystem A:
 
 ```text
 ρ_A(t) = Tr_B[ |ψ(t)⟩ ⟨ψ(t)| ]
 ```
 
-The von Neumann entropy is then computed from the eigenvalues {λ_k} of ρ_A:
+The von Neumann entropy from eigenvalues {λ_k} of ρ_A:
 
 ```text
 S_A(t) = -Σ_k λ_k ln λ_k
 ```
 
-### Observables and averages
-
-Time-averaged entropy over a window [0, T]:
+### Time averages
 
 ```text
 ⟨S_A⟩_T = (1/T) ∫_0^T S_A(t) dt
 ```
 
-Fraction of time spent above a threshold S_0:
-
 ```text
 f(S_0) = (1/T) ∫_0^T Θ[ S_A(t) - S_0 ] dt
 ```
 
-where Θ is the Heaviside step function.
-
 ## Installation
-
-Clone the repository and install in editable mode:
 
 ```bash
 git clone https://github.com/AbolfazlAmiri1998/QuantumEntropyScaling.git
@@ -176,4 +173,5 @@ QuantumEntropyScaling/
 
 ## License
 
+This project is licensed under the MIT License.
 See the [LICENSE](LICENSE) file for details.
