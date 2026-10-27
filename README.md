@@ -111,10 +111,13 @@ These observations should be interpreted as **finite-size numerical evidence**. 
 
 ## Figures
 
-The repository contains two main figures:
+The time evolution of the subsystem entropy for $N = 2, \dots, 6$ demonstrates the development of entanglement:
 
-- `figures/entropy_N2_N6_comparison.png` — time evolution of subsystem entropy for N = 2, ..., 6.
-- `figures/maximum_entropy_vs_N.png` — maximum one-qubit entropy as a function of system size.
+![Entropy Dynamics](figures/entropy_N2_N6_comparison.png)
+
+The maximum one-qubit entropy remains bounded by $\ln(2)$ across different system sizes:
+
+![Maximum Entropy](figures/maximum_entropy_vs_N.png)
 
 ---
 
